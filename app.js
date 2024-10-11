@@ -1,6 +1,6 @@
 
 import { serve } from "./deps.js";
-import { configure, renderFile } from "./deps.js";
+import { configure } from "./deps.js";
 import * as shoppingController from "./controllers/shoppingController.js";
 import * as shoppinglistController from "./controllers/shoppinglistController.js";
 
