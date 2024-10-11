@@ -14,4 +14,4 @@ COPY ./views .
 
 RUN deno cache deps.js
 EXPOSE 7777
-CMD [ "deno", "run", "--allow-env","--allow-net", "--watch", "--unstable","--allow-read", "app.js" ]
+CMD [ "deno", "run", "--allow-env","--allow-net", "--allow-write","--no-check","--watch", "--unstable","--allow-read", "app.js" ]
