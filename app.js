@@ -8,6 +8,19 @@ configure({
   views: `${Deno.cwd()}/views/`,
 });
 
+const responseDetails = {
+  headers: { "Content-Type": "text/html;charset=UTF-8" },
+};
+
+const redirectTo = (path) => {
+  return new Response(`Redirecting to ${path}.`, {
+    status: 303,
+    headers: {
+      "Location": path,
+    },
+  });
+};
+
 
   const handleRequest = async (request) => {
     const url = new URL(request.url);
