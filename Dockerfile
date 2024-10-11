@@ -5,13 +5,8 @@ EXPOSE 7777
 WORKDIR /app
 
 COPY deps.js .
-COPY app.js .
-COPY ./controllers ./controllers
-COPY ./services ./services
-COPY ./database ./database 
-COPY ./views .
-
 
 RUN deno cache deps.js
-EXPOSE 7777
+COPY . .
+
 CMD [ "deno", "run", "--allow-env","--allow-net", "--allow-write","--no-check","--watch", "--unstable","--allow-read", "app.js" ]
