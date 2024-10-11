@@ -1,6 +1,6 @@
 
-import { serve } from "https://deno.land/std@0.222.1/http/server.ts";
-import { configure } from "https://deno.land/x/eta@v2.2.0/mod.ts";
+import { serve } from "./deps.js";
+import { configure, renderFile } from "./deps.js";
 import * as shoppingController from "./controllers/shoppingController.js";
 import * as shoppinglistController from "./controllers/shoppinglistController.js";
 
