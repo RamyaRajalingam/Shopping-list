@@ -1,0 +1,50 @@
+<% layout("./layouts/layout.eta") %>
+ <style>
+     a {
+      color: red; /* Change link text color to red */
+    }
+    body {
+      background-color: lightblue;
+      color: red; 
+    }
+  </style>
+ <h1><%= it.shoppingList.name %></h1>
+
+<h2>Add an Item to the list</h2>
+<form action="/lists/<%= it.shoppingList.id %>/items" method="POST">
+    <label for="item_name">Item Name:</label>
+    <input type="text" name="name" id="item_name" required>
+    <button type="submit">Add Item</button>
+</form>
+
+<h2>Uncollected Items</h2>
+<ul>
+    <% if (it.uncollectedItems && it.uncollectedItems.length > 0) { %>
+        <% it.uncollectedItems.forEach((item) => { %>
+            <li>
+                <span><%= item.name %></span>
+                <form action="/lists/<%= it.shoppingList.id %>/items/<%= item.id %>/collect" method="POST" style="display:inline;">
+                    <button type="submit">Mark collected!</button>
+                </form>
+            </li>
+        <% }) %>
+    <% } else { %>
+        <li>No uncollected items in this list.</li>
+    <% } %>
+</ul>
+
+<h2>Collected Items</h2>
+<ul>
+    <% if (it.collectedItems && it.collectedItems.length > 0) { %>
+        <% it.collectedItems.forEach((item) => { %>
+            <li>
+                <del><%= item.name %></del>
+            </li>
+        <% }) %>
+    <% } else { %>
+        <li>No collected items in this list.</li>
+    <% } %>
+</ul>
+
+<a href="/lists">Back to Shopping Lists</a> <br>
+<a href="/">Back to Main Page</a>

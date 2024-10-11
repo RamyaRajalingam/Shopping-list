@@ -1,0 +1,32 @@
+<% layout("./layouts/layout.eta") %>
+ <style>
+     a {
+      color: red; /* Change link text color to red */
+    }
+    body {
+      background-color: lightblue;
+      color: red; 
+    }
+  </style>
+<h1>Shopping List<h1>
+
+    <h2>Add a Shopping List</h2>
+    <form method="POST" action="/lists">
+        Name: <input type="text" name="name" />
+        <input type="submit" value="Create shopping list!" />
+    </form>
+
+    <h2>Active Shopping Lists</h2>
+    <ul>
+        <% it.shopping_lists.forEach((shoplist) => { %>
+            <li>
+                <a href="/lists/<%= shoplist.id %>"><%= shoplist.name %></a>
+                <form method="POST" action="/lists/<%= shoplist.id %>/deactivate" style="display:inline;">
+                    <input type="submit" value="Deactivate Shopping List" />
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+
+    <a href="/">Back to Main Page</a> <!-- Link to Main Page -->
+

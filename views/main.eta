@@ -1,0 +1,27 @@
+<% layout("./layouts/layout.eta") %>
+  <style>
+     a {
+      color: red; /* Change link text color to red */
+    }
+    body {
+      background-color: lightblue;
+      color: red; 
+    }
+  </style>
+ <title>Statistics</title>
+
+
+    <h1>Shopping List Statistics</h1>
+    
+    <% if (it.message) { %>
+        <p><%= it.message %></p>
+    <% } else { %>
+        <ul>
+            <li>Shopping lists: <%= it.statistics.numberOfLists %></li>
+            <li>Shopping list items: <%= it.statistics.numberOfItems %></li>
+        </ul>
+    <% } %>
+
+    <a href="/lists">Go to Shopping Lists</a>
+</body>
+</html>
