@@ -9,6 +9,7 @@ COPY app.js .
 COPY ./controllers ./controllers
 COPY ./services ./services
 COPY ./database ./database 
+COPY ./views .
 
 
 RUN deno cache deps.js
